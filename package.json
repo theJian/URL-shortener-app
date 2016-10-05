@@ -1,0 +1,23 @@
+{
+  "name": "url-shortener-app",
+  "version": "0.1.0",
+  "description": "Yet another URL shortener",
+  "main": "shortener.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theJian/URL-shortener-app.git"
+  },
+  "keywords": [
+    "url",
+    "shortener"
+  ],
+  "author": "A2ZH",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/theJian/URL-shortener-app/issues"
+  },
+  "homepage": "https://github.com/theJian/URL-shortener-app#readme"
+}
