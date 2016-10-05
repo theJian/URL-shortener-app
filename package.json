@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/theJian/URL-shortener-app/issues"
   },
-  "homepage": "https://github.com/theJian/URL-shortener-app#readme"
+  "homepage": "https://github.com/theJian/URL-shortener-app#readme",
+  "dependencies": {
+    "hapi": "^15.1.1",
+    "mongoose": "^4.6.2"
+  }
 }
