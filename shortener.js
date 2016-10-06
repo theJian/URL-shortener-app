@@ -15,3 +15,23 @@ mongoose.connect(mongoURL, {
 
 const db = mongoose.Connection;
 
+/*
+ * Server Initialization
+ */
+server.connection({
+  port: process.env.PORT || 3000,
+  routes: { cors: true }
+});
+
+server.register(require('inert'), err => {
+  db.on('error', console.error.bind(console, 'connection error: '))
+    .once('open', () => {
+      server.route(routes);
+
+      server.start( err => {
+        if(err) throw err;
+
+        console.log( 'Server running at port', server.info.port );
+      } );
+    });
+});
