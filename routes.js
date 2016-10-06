@@ -25,7 +25,7 @@ module.exports = [
     method: 'GET',
     path: '/public/{file}',
     handler(req, res) {
-      res.file(`public/${request.params.file}`);
+      res.file(`public/${req.params.file}`);
     }
   },
   {
@@ -35,7 +35,7 @@ module.exports = [
       const uniqueID = createHash(hashlen);
       const newRedir = new Redir({
         shortURL: `${baseURL}/${uniqueID}`,
-        originalURL: request.payload.url,
+        originalURL: req.payload.url,
         createdAt: new Date()
       });
 
@@ -46,6 +46,25 @@ module.exports = [
           res(redir);
         }
       } );
+    }
+  },
+  {
+    method: 'GET',
+    path: '/{hash}',
+    handler(req, res) {
+      const query = {
+        'shortURL': `${baseURL}/${req.params.hash}`
+      };
+
+      Redir.findOne(query, (err, redir) => {
+        if(err) {
+          return res(err);
+        } else if(redir) {
+          res().redirect(redir.url);
+        } else {
+          res.file('views/404.html').code(404);
+        }
+      });
     }
   }
 ];
